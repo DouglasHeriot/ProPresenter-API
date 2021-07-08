@@ -204,6 +204,12 @@ EXPECTED RESPONSE:
 {"acn":"ath","ath":true,"err":""}
 ```
 
+EXPECTED RESPONSE ON FAILURE:
+
+```javascript
+{"acn":"ath","ath":false,"err":"Password is incorrect"}
+```
+
 ### On New Time
 
 EXPECTED RESPONSE:
@@ -241,3 +247,42 @@ EXPECTED RESPONSE:
 	]
 }
 ```
+
+
+### Requesting Current Slide
+
+Not sure what the commands mean – looks like you send a "psl" request to get a UID, and then you use that UID to perform a "fv" request.
+
+COMMAND TO SEND:
+```javascript
+{"acn":"psl"}
+```
+
+EXPECTED RESPONSE:
+```javascript
+{"acn":"psl","uid":"8193371D-3272-4AC1-943D-87DFEF26990A"}
+```
+
+NEXT COMMAND TO SEND:
+```javascript
+{"acn":"fv","uid":"8193371D-3272-4AC1-943D-87DFEF26990A"}
+```
+
+EXPECTED RESPONSE:
+Same as "On New Slide" above.
+
+
+
+### Stage Display Layouts
+
+COMMAND TO SEND:
+
+```javascript
+{"acn":"asl"}
+```
+
+
+EXPECTED RESPONSE:
+(example, haven't yet analysed what it all means)
+```javascript
+{"acn":"asl","ary":[{"brd":true,"uid":"8193371D-3272-4AC1-943D-87DFEF26990A","zro":0,"oCl":"0.985948 0.000000 0.026951","fme":[{"ufr":"{{0.025000000000000001, 0.375}, {0.40000000000000002, 0.5}}","mde":1,"tCl":"1.000000 1.000000 1.000000","tAl":2,"tSz":60,"nme":"Current Slide","typ":1},{"ufr":"{{0.025000000000000001, 0.27500000000000002}, {0.40000000000000002, 0.10000000000000001}}","mde":1,"tCl":"1.000000 1.000000 1.000000","tAl":2,"tSz":60,"nme":"Current Slide Notes","typ":3},{"ufr":"{{0.45000000000000001, 0.47399999999999998}, {0.29999999999999999, 0.40000000000000002}}","mde":1,"tCl":"1.000000 1.000000 1.000000","tAl":2,"tSz":60,"nme":"Next Slide","typ":2},{"ufr":"{{0.45000000000000001, 0.374}, {0.29999999999999999, 0.10000000000000001}}","mde":1,"tCl":"1.000000 1.000000 1.000000","tAl":2,"tSz":60,"nme":"Next Slide Notes","typ":4},{"ufr":"{{0.77500000000000002, 0.375}, {0.20000000000000001, 0.40000000000000002}}","nme":"Chord Chart","mde":1,"typ":9},{"ufr":"{{0.45000000000000001, 0.13}, {0.40000000000000002, 0.23999999999999999}}","nme":"PCO Live","mde":1,"typ":10},{"ufr":"{{0.050000000000000003, 0.90000000000000002}, {0.20000000000000001, 0.10000000000000001}}","mde":1,"tCl":"1.000000 1.000000 1.000000","tAl":2,"tSz":200,"nme":"Clock","typ":6},{"ufr":"{{0.40000000000000002, 0.90000000000000002}, {0.20000000000000001, 0.10000000000000001}}","mde":1,"tCl":"1.000000 1.000000 1.000000","tAl":2,"tSz":200,"nme":"Video Countdown","typ":8},{"ufr":"{{0.050000000000000003, 0.025000000000000001}, {0.90000000000000002, 0.10000000000000001}}","fCl":"0.135296 1.000000 0.024919","mde":1,"tCl":"1.000000 1.000000 1.000000","tAl":2,"fCh":true,"tSz":60,"nme":"Message","typ":5}],"ovr":false,"acn":"sl","nme":"Default"}]}```
